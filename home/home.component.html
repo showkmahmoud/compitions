@@ -1,9 +1,33 @@
-<div class="home-page-wrapper relative">
+<div class="home-page-wrapper relative py-4">
   <div class="overlay"></div>
   <div class="container">
-    <ng-container *ngFor="let item of teams">
-
-    </ng-container>
-
+    <div class="header text-center mb-4 capitalize">
+      <h2 class="text-0">Champion cup</h2>
+    </div>
+    <div class="flex">
+      <ng-container *ngFor="let item of teams; let teamIndex = index">
+        <div class="team-wrapper col-3 mx-2 p-3">
+          <p class="team-name mb-4">{{ item.name }}</p>
+          <ng-container *ngFor="let player of item.players; let playerIndex= index">
+            <div class="player-wrapper flex my-2 justify-content-between">
+                <div class="player-data flex justify-content-between">
+                  <div class="check-box">
+                    <p-checkbox
+                    [(ngModel)]="player.checked"
+                     [binary]="true"
+                      inputId="binary"
+                      (onChange)="onCheckPlayer()"
+                      ></p-checkbox>
+                  </div>
+                  <p class="player-name mx-2">{{ player.name }}</p>
+                </div>
+                <ng-container *ngIf="player.checked">
+                <p class="score">50 pointes</p>
+                </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>

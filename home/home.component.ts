@@ -25,4 +25,7 @@ export class HomeComponent {
     }
     this.teams = this.localStorage.getItem(LOCAL_STORAGE_KEY.TEAMS);
   }
+  onCheckPlayer(){
+    this.localStorage.setItem(LOCAL_STORAGE_KEY.TEAMS,this.teams)
+  }
 }
